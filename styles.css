@@ -28,9 +28,12 @@ a:hover {
     color: #F2C94C;
 }
 
-nav {
-    position: fixed;
-    width: 100%;
+.navbar {
+    background-color: transparent !important;
+}
+
+.navbar-toggler {
+    border: none;
 }
 
 .navbar-container {
@@ -143,6 +146,10 @@ font-weight: 600;
 
     #main-image {
         display: none;
+    }
+
+    #logo-image{
+        height: 210px;
     }
 
     .product-card {

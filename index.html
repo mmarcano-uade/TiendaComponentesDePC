@@ -13,27 +13,29 @@
 </head>
 <body>
 <header>
-    <nav>
-        <div class="container navbar-container">
-            <div class="row">
-                <div class="col-lg-8 col-sm-5">
-                    <div>
-                        <a class="navbar-brand navbar-item" href="#"><img src="ico.png" alt="" height="40px"></a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="row text-center">
-                        <div class="col">
-                            <a class="navbar-brand navbar-item" href="#">Nosotros</a>
-                        </div>
-                        <div class="col">
-                            <a class="navbar-brand navbar-item" href="#">Productos</a>
-                        </div>
-                        <div class="col">
-                            <a class="navbar-brand navbar-item" href="#">Contacto</a>
-                        </div>
-                    </div>
-                </div>
+    <nav class="navbar navbar-expand-lg bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="ico.png" alt="Logo" height="40">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -42,14 +44,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="container-fluid section1">
-                <div class="container">
-
+                <div class="container pt-5" >
                     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12 text-center" style="padding-top: 100px;">
-                                        <img src="logo.png" alt="" width="300px" height="200px">
+                                        <img id="logo-image" src="logo.png" alt="" width="300px" height="200px">
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <img id='main-image' src="pc.png" alt="Mi foto al estilo breaking bad" width="400px" height="400px">
