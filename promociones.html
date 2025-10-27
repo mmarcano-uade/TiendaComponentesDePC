@@ -16,7 +16,7 @@
      <nav class="navbar navbar-expand-lg bg-white fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <div class="ico-home"></div>
+                <i class="logo-mask" aria-hidden="true"></i>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -36,7 +36,7 @@
                         <a class="nav-link fw-semibold" href="promociones.html">Promociones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="index.html#contacto">Contacto</a>
+                        <a class="nav-link fw-semibold" href="#contacto">Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -56,17 +56,35 @@
               <a href="products.html" class="btn btn-dark px-4 mt-2 mt-md-0">Comprar ahora</a>
           </div>
       </div>
-      <div class="row justify-content-center pt-5 pb-5 frame-container">
-          <div class="col text-center">
-              <div class="row gap-2 justify-content-center" id="productContainerRender"></div>
-          </div>
-           <section id="results" class="mt-3">
-                <h4>Resumen</h4>
-                <div><strong>Total sin descuento:</strong> <span id="subtotal">$0</span></div>
-                <div><strong>Descuentos:</strong> <span id="discountsTotal">$0</span></div>
-                <ul id="discountsBreakdown"></ul>
-                <div><strong>Total final:</strong> <span id="finalTotal">$0</span></div>
-            </section>
+      <div class="row  pt-5 pb-5 frame-container">
+            <div class="col-md-8 col-sm-12">
+                <aside>
+                <div class="col text-center">
+                <div class="row gap-2 justify-content-center" id="productContainerRender"></div>
+                </div>
+            </aside>  
+        
+            </div>
+            <div class="col">
+                <section id="results" class="mt-3">
+                    <h1>Resumen</h1>
+                    <h5><strong>Total sin descuento:</strong> <span id="subtotal">$0</span></h5>
+                    <hr size="4px" color="#e6e6e6">
+
+
+                    <ul id="discountsBreakdown"></ul>
+
+                    <div class="card mb-4 border-0 shadow-sm" style="background-color: #0F1F2F;">
+                        <div id="threshold"></div>
+                    </div>
+                    <h3>Descuentos: <span id="discountsTotal" style="color:red">$0</h3>
+
+                    <hr size="4px" color="#e6e6e6">
+
+                    <h2>Total final: <span id="finalTotal">$0</span></h2>
+                </section>
+            </div>
+        
         </div>
   </div>
 </main>
@@ -120,44 +138,37 @@
         </div>
     </div>
 </footer>
+
+<script>
+    const navbar = document.querySelector('nav');
+    const THRESHOLD = 60; // px
+
+    function onScroll() {
+        if (window.scrollY > THRESHOLD) {
+            navbar.classList.add('is-scrolled');
+        } else {
+            navbar.classList.remove('is-scrolled');
+        }
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => { onScroll(); ticking = false; });
+            ticking = true;
+        }
+    });
+    onScroll();
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="products.js"></script>
+
+
 <script>
     var THRESHOLD_DISCOUNT = 200_000
-   const cart = {};
-   var products = [
-        {
-            id: "gpu",
-            promotion: "3x2OFF",
-            price: 500000,
-            priceFormat: "500.000",
-            imageUrl: "td.png",
-            name: "Placa de Video Asrock Radeon RX 9070 XT 16GB GDDR6 Steel",
-        },
-        {
-            id: "mem",
-            promotion:"2x50OFF",
-            price: 40000,
-            priceFormat: "40.000",
-            imageUrl: "mem.png",
-            name: "Memoria Team DDR4 4GB 2400MHz Elite Plus Red",
-        },
-         {
-            id: "source",
-            promotion:"2x50OFF",
-            price: 100000,
-            priceFormat: "100.000",
-            imageUrl: "fuente.png",
-            name: "Fuente Thermaltake Smart BX1 650W RGB 80 Plus Bronze",
-        },
-           {
-            id: "mother",
-            price: 200000,
-            priceFormat: "200.000",
-            imageUrl: "mother.png",
-            name: "Fuente Thermaltake Smart BX1 650W RGB 80 Plus Bronze",
-        }
-    ]
-
+    const cart = {};
 </script>
 
 <script>
@@ -198,14 +209,14 @@
             const disc = discountPerItem(p, qty);
             subtotal += line;
             itemDiscount += disc;
-            if (disc > 0) {
+            // if (disc > 0) {
                 itemBreakdown.push({
                     id: p.id,
                     name: p.name,
                     detail: promoLabel(p.promotion),
                     amount: disc,
                 });
-            }
+            // }
             }
         });
         const afterItem = subtotal - itemDiscount;
@@ -228,7 +239,7 @@
     function promoLabel(code){
         switch (code) {
             case "2x50OFF": return "Llevá 2 y 50% en la 2da";
-            case "3x2": return "Promo 3×2";
+            case "3x2OFF": return "Promo 3×2";
             default: return "";
         }
     };
@@ -252,83 +263,37 @@
         document.getElementById("subtotal").textContent = fmtARS(r.subtotal);
         document.getElementById("discountsTotal").textContent = fmtARS(r.totalDiscount);
         document.getElementById("finalTotal").textContent = fmtARS(r.finalTotal);
-
+        const div = document.getElementById("threshold");
+        div.innerHTML = ""
         const ul = document.getElementById("discountsBreakdown");
         ul.innerHTML = "";
         r.itemBreakdown.forEach((d) => {
             const li = document.createElement("li");
-            li.textContent = `${d.name} — ${d.detail}: −${fmtARS(d.amount)}`;
+            const span = document.createElement("span");
+            span.style.color = "red"
+            span.textContent = ` −${fmtARS(d.amount)}`
+            li.textContent = `${d.name} — ${d.detail}: `;
+            li.appendChild(span)
             ul.appendChild(li);
         });
         if (r.thresholdDiscount > 0) {
-            const li = document.createElement("li");
-            li.textContent = `10% por compras superiores a ${fmtARS(THRESHOLD_DISCOUNT)}: −${fmtARS(r.thresholdDiscount)}`;
-            ul.appendChild(li);
+            div.className="card-body d-flex flex-column flex-md-row align-items-center justify-content-between"
+            const h5 = document.createElement("h6");
+            const span = document.createElement("span");
+            span.style.color = "red"
+            h5.style.color = "#ffffff"
+            h5.textContent = `10% por compras superiores a ${fmtARS(THRESHOLD_DISCOUNT)}:`;
+            span.textContent = ` −${fmtARS(r.thresholdDiscount)}`
+            h5.appendChild(span)
+            div.appendChild(h5);
         }
     }
 </script>
 
-
-
 <script>
-    const frag = document.createDocumentFragment();
-    const root = document.querySelector('#productContainerRender')
-    products.forEach((p) => {
-        const col = document.createElement('div');
-        col.className = 'col-sm-12 product-card';
-        const badge = document.createElement('span');
-        badge.className = 'badge text-bg-secondary badge_product';
-        if (p.promotion) {
-            if ( p.promotion === "2x50OFF"){
-                badge.textContent = "2da 50%"
-            } else if ( p.promotion === "3x2OFF" ){
-                badge.textContent = '3x2';
-            }
-        }
-
-        const inner = document.createElement('div');
-        inner.className = 'text-center';
-
-        const img = document.createElement('img');
-        img.className = 'd-block w-100 product-image';
-        img.src = p.imageUrl || 'td.png';
-        img.alt = p.name || 'Producto';
-
-        const h5 = document.createElement('h5');
-        h5.textContent = p.name || 'Producto sin nombre';
-
-        const h6 = document.createElement('h6');
-        h6.textContent = '$' + p.priceFormat
-        
-        const qtyWrap = document.createElement("div");
-        qtyWrap.className = "d-flex align-items-center justify-content-center gap-2 my-2";
-        const qtyLabel = document.createElement("label");
-        qtyLabel.textContent = "Cantidad:";
-        qtyLabel.setAttribute("for", `qty-${p.id}`);
-        const qtyInput = document.createElement("input");
-        qtyInput.type = "number";
-        qtyInput.min = "0";
-        qtyInput.value = "0";
-        qtyInput.id = `qty-${p.id}`;
-        qtyInput.className = "form-control";
-        qtyInput.style.maxWidth = "100px";
-        qtyWrap.appendChild(qtyLabel);
-        qtyWrap.appendChild(qtyInput);
-
-        inner.appendChild(img);
-        inner.appendChild(h5);
-        inner.appendChild(h6);
-        inner.appendChild(qtyWrap);
-        // inner.appendChild(btn);
-
-        col.appendChild(badge);
-        col.appendChild(inner);
-        frag.appendChild(col);
-    });
-
-  root.appendChild(frag);
   hookInteractions();
   refreshTotals();
 </script>
+
 </body>
 </html>
