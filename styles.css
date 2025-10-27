@@ -82,9 +82,15 @@ font-weight: 600;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    /* align-items: center;
+    text-align: center; */
     padding-bottom: 8px;
+}
+
+
+.badge_product {
+    position: absolute;
+    margin-top: 4px;
 }
 
 .carousel-control-prev-icon,
