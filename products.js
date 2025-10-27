@@ -61,6 +61,11 @@
     
     const frag = document.createDocumentFragment();
     const root = document.querySelector('#productContainerRender')
+    console.log(window.location.href,!window.location.href.includes("promociones"), !window.location.href.includes("products"))
+    if (!window.location.href.includes("products") && !window.location.href.includes("promociones")){
+        products = products.filter(p => p.promotion)
+    }
+
     products.forEach((p) => {
         const col = document.createElement('div');
         col.className = 'col-sm-12 product-card';

@@ -304,3 +304,88 @@ a:hover {
 }
 
 
+#carouselExampleAutoplaying .carousel-control-prev,
+#carouselExampleAutoplaying .carousel-control-next{
+  width: auto;           /* que no ocupen 50% */
+  opacity: 1 !important; /* visibles siempre */
+}
+
+#carouselExampleAutoplaying .carousel-control-next{
+    right: -42px !important;
+}
+
+#carouselExampleAutoplaying .carousel-control-prev{
+        left: -42px !important;
+
+}
+
+
+#carouselExampleAutoplaying .carousel-control-prev { left: 12px; }
+#carouselExampleAutoplaying .carousel-control-next { right: 12px; }
+
+/* Botón circular + sombra + borde */
+#carouselExampleAutoplaying .carousel-control-prev-icon,
+#carouselExampleAutoplaying .carousel-control-next-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #E9EAED;         /* círculo gris claro */
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50% 50%;
+  filter: none;                       /* sin filtros de Bootstrap */
+}
+
+/* Reemplazamos los SVG por chevrons gris oscuro */
+#carouselExampleAutoplaying .carousel-control-prev-icon{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B636B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 18l-6-6 6-6'/%3E%3C/svg%3E");
+}
+#carouselExampleAutoplaying .carousel-control-next-icon{
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%235B636B\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"%3E%3Cpath d=\"M9 6l6 6-6 6\"/%3E%3C/svg%3E');
+}
+
+/* Hover / Focus */
+#carouselExampleAutoplaying .carousel-control-prev:hover .carousel-control-prev-icon,
+#carouselExampleAutoplaying .carousel-control-next:hover .carousel-control-next-icon{
+  background-color: #F1F5F9;
+  border-color: #D8DEE6;
+}
+#carouselExampleAutoplaying .carousel-control-prev:focus .carousel-control-prev-icon,
+#carouselExampleAutoplaying .carousel-control-next:focus .carousel-control-next-icon{
+  outline: 3px solid #3AC1E0; /* tu azul de enlace */
+  outline-offset: 3px;
+}
+
+/* Más chico en mobile para que no tape contenido */
+@media (max-width: 576px){
+  #carouselExampleAutoplaying .carousel-control-prev-icon,
+  #carouselExampleAutoplaying .carousel-control-next-icon{
+    width: 36px; height: 36px;
+  }
+}
+
+ /* Hero */
+  .fg-hero-apple .fg-kicker{ letter-spacing:.16em; font-weight:600; color:#64748B; }
+  .fg-hero-apple .fg-underline{
+    box-shadow: inset 0 -0.35em 0 rgba(58,193,224,.25);
+  }
+
+  /* Tiles minimalistas */
+  .fg-tile{
+    background:#fff; border:1px solid var(--fg-border);
+    border-radius: var(--fg-radius); box-shadow: var(--fg-shadow);
+  }
+  .fg-stroke{ fill:none; stroke:#AAB0BA; stroke-width:10; stroke-linecap:round; stroke-linejoin:round; }
+
+  /* Botones */
+  .btn-dark{ background:#212529; border-color:#212529; }
+  .btn-dark:hover{ background:#141619; border-color:#141619; }
+  .btn-outline-dark{ border-color:#282C31; color:#282C31; }
+  .btn-outline-dark:hover{ background:#282C31; color:#fff; }
+
+  /* Responsivo */
+  @media (max-width: 991.98px){
+    .fg-hero-apple h1{ font-size: 2.25rem; }
+  }
