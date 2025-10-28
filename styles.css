@@ -13,11 +13,12 @@
 }
 
 .list-group-item {
-    color: var(--clr-text);
+    color: white;
+    background-color: transparent;
 }
 
 .list-group-item.active {
-    color: var(--clr-text);
+    color: #3AC1E0;
     background-color: transparent;
     border-color: var(--bs-list-group-border-color);
 }
@@ -192,9 +193,19 @@ a:hover {
 
 
 .categories-container {
+    padding: 1.5rem;
     height: 800px;
-    border-right: 1px solid #e6e6e6;
-    border-radius: 0 !important;
+    border-radius: inherit;
+}
+
+
+.categories-container p{
+    color: white;
+}
+
+
+.categories-container h5{
+    color: white;
 }
 
 .frame-container {
