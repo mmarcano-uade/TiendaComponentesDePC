@@ -52,6 +52,21 @@
             priceFormat: "80.000",
             imageUrl: "ssd.png",
             name: "Disco Solido SSD Team 256GB GX2 530MB/s",
+        },
+        {
+            id: "cpuarmado",
+            price: 600_000,
+            priceFormat: "600.000",
+            imageUrl: "torre.png",
+            name: "Computadora completa i7 7400 36GB RAM 5060 TI NVIDA",
+        },
+        {
+            id: "teclado",
+            promotion:"2x50OFF",
+            price: 20_000,
+            priceFormat: "20.000",
+            imageUrl: "teclado.png",
+            name: "Teclado español Hyperx 79XUY",
         }
     ]
 
